@@ -1,0 +1,355 @@
+/* =========================================
+   LMS HEADER
+========================================= */
+.lms-header {
+  width: 100%;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 30px;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #e8eaf0;
+
+  box-sizing: border-box;
+
+  font-family: Inter, Arial, sans-serif;
+
+  position: relative;
+  z-index: 100;
+}
+
+
+/* =========================================
+   LEFT SECTION
+========================================= */
+
+.lms-header-left {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  min-width: 0;
+}
+
+
+/* LOGO */
+
+.lms-logo {
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: linear-gradient(
+    135deg,
+    #4f46e5,
+    #6366f1
+  );
+
+  color: #ffffff;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  box-shadow:
+    0 5px 12px rgba(79, 70, 229, 0.18);
+}
+
+
+/* BRAND */
+
+.lms-brand {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  margin: 0;
+  padding: 0;
+}
+
+
+.lms-brand h2 {
+  margin: 0;
+  padding: 0;
+
+  color: #172554;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  line-height: 21px;
+
+  letter-spacing: -0.3px;
+}
+
+
+.lms-brand p {
+  margin: 1px 0 0;
+  padding: 0;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+  font-weight: 400;
+
+  line-height: 14px;
+}
+
+
+/* =========================================
+   RIGHT SECTION
+========================================= */
+
+.lms-header-right {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  margin-left: auto;
+}
+
+
+/* =========================================
+   NOTIFICATION
+========================================= */
+
+.lms-notification {
+  position: relative;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.lms-notification:hover {
+  background: #f8fafc;
+
+  border-color: #cbd5e1;
+
+  transform: translateY(-1px);
+}
+
+
+.lms-notification span {
+  font-size: 16px;
+
+  line-height: 1;
+}
+
+
+/* RED NOTIFICATION DOT */
+
+.lms-notification i {
+  position: absolute;
+
+  top: 7px;
+  right: 7px;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #ef4444;
+
+  border: 2px solid #ffffff;
+}
+
+
+/* =========================================
+   PROFILE
+========================================= */
+
+.lms-profile {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding-left: 18px;
+
+  border-left: 1px solid #e8eaf0;
+}
+
+
+/* AVATAR */
+
+.lms-avatar {
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eef2ff;
+
+  color: #4f46e5;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+
+/* USER INFORMATION */
+
+.lms-user-info {
+  display: flex !important;
+
+  flex-direction: column !important;
+
+  align-items: flex-start !important;
+
+  justify-content: center !important;
+
+  gap: 1px !important;
+
+  min-width: 95px;
+
+  margin: 0;
+  padding: 0;
+}
+
+
+/* NAME */
+
+.lms-user-name {
+  display: block;
+
+  margin: 0;
+  padding: 0;
+
+  color: #1e293b;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  line-height: 18px;
+
+  white-space: nowrap;
+}
+
+
+/* ROLE */
+
+.lms-user-role {
+  display: block;
+
+  margin: 0;
+  padding: 0;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  line-height: 15px;
+
+  text-transform: capitalize;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 700px) {
+
+  .lms-header {
+    height: 66px;
+
+    padding: 0 20px;
+  }
+
+  .lms-brand p {
+    display: none;
+  }
+
+  .lms-header-right {
+    gap: 10px;
+  }
+
+  .lms-profile {
+    padding-left: 10px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+  .lms-header {
+    height: 62px;
+
+    padding: 0 14px;
+  }
+
+  .lms-logo {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 9px;
+  }
+
+  .lms-brand h2 {
+    font-size: 16px;
+  }
+
+  .lms-notification {
+    width: 36px;
+    height: 36px;
+  }
+
+  .lms-avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .lms-user-info {
+    display: none !important;
+  }
+
+}
