@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import SignIn from "./auth/signin.jsx";
 import SignUp from "./auth/signup.jsx";
-import StudentDashboard from "./dashboard/student.jsx";
+import StudentDashboard from "./student/dashboard/student.jsx";
+import AdminDashboard from "./admin/dashboard/dashboard.jsx";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
 
         <Route path="/StudentDashboard" element={<StudentDashboard />} />
+        <Route path="/AdminDashboard" element={<AdminDashboard/>}/>
       </Routes>
     </BrowserRouter>
   );

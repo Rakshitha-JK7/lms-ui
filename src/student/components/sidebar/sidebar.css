@@ -96,19 +96,12 @@
 /* ICON */
 
 .sidebar-icon {
-  width: 20px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #94a3b8;
-
-  font-size: 17px;
-
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
+  color: #94a3b8;
+  stroke-width: 1.8;
 }
-
 
 /* HOVER */
 
@@ -187,5 +180,18 @@
   .sidebar-icon {
     font-size: 18px;
   }
+
+  .logout-item {
+  color: #64748b;
+}
+
+.logout-item:hover {
+  background: #fff1f2;
+  color: #dc2626;
+}
+
+.logout-item:hover .sidebar-icon {
+  color: #dc2626;
+}
 
 }

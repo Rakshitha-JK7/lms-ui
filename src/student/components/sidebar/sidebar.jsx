@@ -1,8 +1,31 @@
 import "./sidebar.css";
 import { useNavigate } from "react-router-dom";
 
-function Sidebar() {
-  
+import {
+  LayoutDashboard,
+  BookOpen,
+  ClipboardCheck,
+  FileText,
+  BarChart3,
+  Settings,
+  LogOut
+} from "lucide-react";
+
+const Sidebar = () => {
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    navigate("/signin");
+  };
+
+  const handleDashboard = () => {
+    navigate("/StudentDashboard");
+  };
+
   return (
     <aside className="sidebar">
 
@@ -12,28 +35,31 @@ function Sidebar() {
           MENU
         </p>
 
-        <button className="sidebar-item active">
-          <span className="sidebar-icon">⌂</span>
+        <button
+          className="sidebar-item active"
+          onClick={handleDashboard}
+        >
+          <LayoutDashboard className="sidebar-icon" />
           <span>Dashboard</span>
         </button>
 
         <button className="sidebar-item">
-          <span className="sidebar-icon">▣</span>
+          <BookOpen className="sidebar-icon" />
           <span>Courses</span>
         </button>
 
         <button className="sidebar-item">
-          <span className="sidebar-icon">✓</span>
+          <ClipboardCheck className="sidebar-icon" />
           <span>Assignments</span>
         </button>
 
         <button className="sidebar-item">
-          <span className="sidebar-icon">◈</span>
+          <FileText className="sidebar-icon" />
           <span>Exams</span>
         </button>
 
         <button className="sidebar-item">
-          <span className="sidebar-icon">◫</span>
+          <BarChart3 className="sidebar-icon" />
           <span>Progress</span>
         </button>
 
@@ -47,12 +73,15 @@ function Sidebar() {
         </p>
 
         <button className="sidebar-item">
-          <span className="sidebar-icon">⚙</span>
+          <Settings className="sidebar-icon" />
           <span>Settings</span>
         </button>
 
-        <button className="sidebar-item">
-          <span className="sidebar-icon">↪</span>
+        <button
+          className="sidebar-item logout-item"
+          onClick={handleLogout}
+        >
+          <LogOut className="sidebar-icon" />
           <span>Logout</span>
         </button>
 
@@ -60,6 +89,6 @@ function Sidebar() {
 
     </aside>
   );
-}
+};
 
 export default Sidebar;
