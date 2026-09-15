@@ -27,7 +27,7 @@ const SignIn = () => {
         if (data.user.role === "admin") {
           navigate("/AdminDashboard");
         } else if (data.user.role === "instructor") {
-          console.log("Navigating to instructor dashboard");
+          navigate("/InstructorDashboard");
         } else {
           navigate("/StudentDashboard");
         }

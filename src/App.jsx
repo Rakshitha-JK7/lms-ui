@@ -3,6 +3,7 @@ import SignIn from "./auth/signin.jsx";
 import SignUp from "./auth/signup.jsx";
 import StudentDashboard from "./student/dashboard/student.jsx";
 import AdminDashboard from "./admin/dashboard/dashboard.jsx";
+import InstructorDashboard from "./instructor/dashboard.jsx";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
 
         <Route path="/StudentDashboard" element={<StudentDashboard />} />
         <Route path="/AdminDashboard" element={<AdminDashboard/>}/>
+        <Route path ="/InstructorDashboard" element={<InstructorDashboard/>}/>
       </Routes>
     </BrowserRouter>
   );
