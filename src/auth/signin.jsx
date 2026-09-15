@@ -29,7 +29,7 @@ const SignIn = () => {
         } else if (data.user.role === "instructor") {
           console.log("Navigating to instructor dashboard");
         } else {
-          console.log("Navigating to student dashboard");
+          navigate("/StudentDashboard");
         }
       }
     } catch (error) {

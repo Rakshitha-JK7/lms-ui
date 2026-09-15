@@ -2,8 +2,13 @@
    LMS HEADER
 ========================================= */
 .lms-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   height: 70px;
+  z-index: 1000;
 
   display: flex;
   align-items: center;
@@ -19,10 +24,7 @@
 
   font-family: Inter, Arial, sans-serif;
 
-  position: relative;
-  z-index: 100;
 }
-
 
 /* =========================================
    LEFT SECTION
@@ -36,7 +38,6 @@
 
   min-width: 0;
 }
-
 
 /* LOGO */
 
@@ -52,21 +53,15 @@
 
   border-radius: 11px;
 
-  background: linear-gradient(
-    135deg,
-    #4f46e5,
-    #6366f1
-  );
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
 
   color: #ffffff;
 
   font-size: 18px;
   font-weight: 700;
 
-  box-shadow:
-    0 5px 12px rgba(79, 70, 229, 0.18);
+  box-shadow: 0 5px 12px rgba(79, 70, 229, 0.18);
 }
-
 
 /* BRAND */
 
@@ -79,7 +74,6 @@
   margin: 0;
   padding: 0;
 }
-
 
 .lms-brand h2 {
   margin: 0;
@@ -95,7 +89,6 @@
   letter-spacing: -0.3px;
 }
 
-
 .lms-brand p {
   margin: 1px 0 0;
   padding: 0;
@@ -107,7 +100,6 @@
 
   line-height: 14px;
 }
-
 
 /* =========================================
    RIGHT SECTION
@@ -121,7 +113,6 @@
 
   margin-left: auto;
 }
-
 
 /* =========================================
    NOTIFICATION
@@ -153,7 +144,6 @@
     transform 0.2s ease;
 }
 
-
 .lms-notification:hover {
   background: #f8fafc;
 
@@ -162,13 +152,11 @@
   transform: translateY(-1px);
 }
 
-
 .lms-notification span {
   font-size: 16px;
 
   line-height: 1;
 }
-
 
 /* RED NOTIFICATION DOT */
 
@@ -188,7 +176,6 @@
   border: 2px solid #ffffff;
 }
 
-
 /* =========================================
    PROFILE
 ========================================= */
@@ -203,7 +190,6 @@
 
   border-left: 1px solid #e8eaf0;
 }
-
 
 /* AVATAR */
 
@@ -227,7 +213,6 @@
   font-weight: 700;
 }
 
-
 /* USER INFORMATION */
 
 .lms-user-info {
@@ -247,7 +232,6 @@
   padding: 0;
 }
 
-
 /* NAME */
 
 .lms-user-name {
@@ -265,7 +249,6 @@
 
   white-space: nowrap;
 }
-
 
 /* ROLE */
 
@@ -287,13 +270,11 @@
   white-space: nowrap;
 }
 
-
 /* =========================================
    TABLET
 ========================================= */
 
 @media (max-width: 700px) {
-
   .lms-header {
     height: 66px;
 
@@ -311,16 +292,13 @@
   .lms-profile {
     padding-left: 10px;
   }
-
 }
-
 
 /* =========================================
    MOBILE
 ========================================= */
 
 @media (max-width: 480px) {
-
   .lms-header {
     height: 62px;
 
@@ -351,5 +329,4 @@
   .lms-user-info {
     display: none !important;
   }
-
 }
