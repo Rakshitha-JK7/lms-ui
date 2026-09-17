@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
+
 import {
   LayoutDashboard,
   BookOpen,
@@ -12,7 +13,11 @@ import "./sidebar.css";
 
 const InstructorSidebar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
+  const handleCourses =()=>{
+    navigate("/InstructorCourses");
+  }
   const handleDashboard = () => {
     navigate("/InstructorDashboard");
   };
@@ -32,14 +37,17 @@ const InstructorSidebar = () => {
         <p className="instructor-sidebar-title">MENU</p>
 
         <button
-          className="instructor-sidebar-item active"
+          className={`instructor-sidebar-item ${
+          location.pathname==="/InstructorDashboard"? "active":""}`} 
           onClick={handleDashboard}
         >
           <LayoutDashboard className="instructor-sidebar-icon" />
           <span>Dashboard</span>
         </button>
 
-        <button className="instructor-sidebar-item">
+        <button className={`instructor-sidebar-item ${
+          location.pathname==="/InstructorCourses"? "active":""}`} 
+          onClick={handleCourses} >
           <BookOpen className="instructor-sidebar-icon" />
           <span>Courses</span>
         </button>

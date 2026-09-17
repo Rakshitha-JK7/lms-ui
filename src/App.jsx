@@ -4,6 +4,8 @@ import SignUp from "./auth/signup.jsx";
 import StudentDashboard from "./student/dashboard/student.jsx";
 import AdminDashboard from "./admin/dashboard/dashboard.jsx";
 import InstructorDashboard from "./instructor/dashboard.jsx";
+import Courses from "./student/courses/courses.jsx";
+import InstructorCourses from "./instructor/courses.jsx";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path="/StudentDashboard" element={<StudentDashboard />} />
         <Route path="/AdminDashboard" element={<AdminDashboard/>}/>
         <Route path ="/InstructorDashboard" element={<InstructorDashboard/>}/>
+        <Route path="/Courses" element={<Courses/>}/>
+        <Route path="/InstructorCourses" element={<InstructorCourses/>}/>
       </Routes>
     </BrowserRouter>
   );

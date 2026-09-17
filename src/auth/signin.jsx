@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import api, { UserSignIn } from "../services/api.js";
+import { UserSignIn } from "../services/api.js";
 import "./signin.css";
 
 const SignIn = () => {
@@ -17,6 +17,9 @@ const SignIn = () => {
       const response = await UserSignIn(email, password);
 
       const data = response.data;
+
+      console.log("Data = ", data);
+      
 
       if (data.status) {
         localStorage.setItem("token", data.token);

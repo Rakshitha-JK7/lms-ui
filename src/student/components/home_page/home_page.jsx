@@ -1,271 +1,448 @@
 import "./home_page.css";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { AccessCourses } from "../../../services/api";
 
 const DashboardHome = () => {
+  const navigate = useNavigate();
+
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [message, setMessage] = useState("");
+
   const user = JSON.parse(localStorage.getItem("user"));
+  console.log("USER:", user);
+  console.log("USER ID:", user?.id);
+
+  const handleView = () => {
+    navigate("/Courses");
+  };
+
+  const handleOpenCourse = (id) => {
+    navigate(`/StudentAssignments/${id}`);
+  };
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+
+        const response = await AccessCourses(user.id);
+
+        const data = response.data;
+
+        if (data.status) {
+          setCourses(data.data || []);
+          setMessage(data.message || "");
+        } else {
+          setMessage(data.message || "Failed to fetch courses");
+        }
+      } catch (error) {
+        console.log(error);
+
+        setMessage(
+          error.response?.data?.message || "Fetch Failed!!!"
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCourses();
+  }, []);
 
   return (
     <main className="dashboard-home">
+
       <section className="welcome-card">
+
         <div className="welcome-content">
-          <span className="welcome-tag">STUDENT DASHBOARD</span>
+          <span className="welcome-tag">
+            STUDENT DASHBOARD
+          </span>
 
-          <h1>Welcome back, {user?.fname || "Student"}!</h1>
+          <h1>
+            Welcome back, {user?.fname || "Student"}!
+          </h1>
 
-          <p>Continue your learning journey and keep making progress.</p>
+          <p>
+            Continue your learning journey and keep making progress.
+          </p>
         </div>
+
         <div className="welcome-illustration">
-          <div className="welcome-circle">🎓</div>
+          <div className="welcome-circle">
+            🎓
+          </div>
         </div>
 
-        <section className="stats-grid">
-          <div className="stat-card">
-            <div className="stat-icon blue">📚</div>
-
-            <div className="stat-content">
-              <span>Total Courses</span>
-              <h2>6</h2>
-            </div>
-          </div>
-        </section>
+      </section>
+      <section className="stats-grid">
 
         <div className="stat-card">
-          <div className="stat-icon purple">◔</div>
+          <div className="stat-icon blue">
+            📚
+          </div>
+
+          <div className="stat-content">
+            <span>Total Courses</span>
+
+            <h2>
+              {courses.length}
+            </h2>
+          </div>
+        </div>
+
+
+        <div className="stat-card">
+          <div className="stat-icon purple">
+            ◔
+          </div>
 
           <div className="stat-content">
             <span>Overall Progress</span>
-            <h2>72%</h2>
+
+            <h2>
+              72%
+            </h2>
           </div>
         </div>
 
+
         <div className="stat-card">
-          <div className="stat-icon orange">✓</div>
+          <div className="stat-icon orange">
+            ✓
+          </div>
 
           <div className="stat-content">
             <span>Assignments</span>
-            <h2>4</h2>
+
+            <h2>
+              4
+            </h2>
           </div>
         </div>
 
+
         <div className="stat-card">
-          <div className="stat-icon green">◈</div>
+          <div className="stat-icon green">
+            ◈
+          </div>
 
           <div className="stat-content">
             <span>Upcoming Exams</span>
-            <h2>2</h2>
+
+            <h2>
+              2
+            </h2>
           </div>
         </div>
-      </section>
 
+      </section>
       <section className="dashboard-section">
+
         <div className="section-heading">
+
           <div>
-            <h2>My Courses</h2>
-            <p>Continue where you left off</p>
+            <h2>
+              My Courses
+            </h2>
+
+            <p>
+              Courses available for your department
+            </p>
           </div>
 
-          <button className="view-all-btn">
+          <button
+            className="view-all-btn"
+            onClick={handleView}
+          >
             View all
             <span>→</span>
           </button>
+
         </div>
+
 
         <div className="course-grid">
-          <div className="course-card">
-            <div className="course-card-top">
-              <div className="course-logo blue-logo">WD</div>
 
-              <span className="course-badge">In Progress</span>
-            </div>
+          {loading ? (
 
-            <h3>Web Development</h3>
+            <p>
+              Loading courses...
+            </p>
 
-            <p>Learn HTML, CSS, JavaScript and React.</p>
+          ) : courses.length === 0 ? (
 
-            <div className="course-progress-info">
-              <span>Progress</span>
+            <p>
+              {message || "No Courses available"}
+            </p>
 
-              <strong>80%</strong>
-            </div>
+          ) : (
 
-            <div className="progress-track">
-              <div className="progress-fill" style={{ width: "80%" }}></div>
-            </div>
+            courses.slice(0, 3).map((course) => (
 
-            <button className="continue-btn">
-              Continue Learning
-              <span>→</span>
-            </button>
-          </div>
-
-          <div className="course-card">
-            <div className="course-card-top">
-              <div className="course-logo purple-logo">DS</div>
-
-              <span className="course-badge">In Progress</span>
-            </div>
-
-            <h3>Data Structures</h3>
-
-            <p>Master algorithms and problem solving.</p>
-
-            <div className="course-progress-info">
-              <span>Progress</span>
-
-              <strong>60%</strong>
-            </div>
-
-            <div className="progress-track">
               <div
-                className="progress-fill purple-progress"
-                style={{ width: "60%" }}
-              ></div>
-            </div>
+                className="course-card"
+                key={course.id}
+              >
 
-            <button className="continue-btn">
-              Continue Learning
-              <span>→</span>
-            </button>
-          </div>
+                <div className="course-card-top">
 
-          <div className="course-card">
-            <div className="course-card-top">
-              <div className="course-logo green-logo">DB</div>
+                  <div className="course-logo">
+                    {course.id?.substring(0, 2)}
+                  </div>
 
-              <span className="course-badge">In Progress</span>
-            </div>
+                </div>
 
-            <h3>Database Management</h3>
 
-            <p>Learn SQL, PostgreSQL and database design.</p>
+                <h3>
+                  {course.course_name}
+                </h3>
 
-            <div className="course-progress-info">
-              <span>Progress</span>
 
-              <strong>45%</strong>
-            </div>
+                <p>
+                  Course ID: {course.id}
+                </p>
 
-            <div className="progress-track">
-              <div
-                className="progress-fill green-progress"
-                style={{ width: "45%" }}
-              ></div>
-            </div>
 
-            <button className="continue-btn">
-              Continue Learning
-              <span>→</span>
-            </button>
-          </div>
+                <button
+                  className="open-course-btn"
+                  onClick={() =>
+                    handleOpenCourse(course.id)
+                  }
+                >
+                  Open Course
+                  <span>→</span>
+                </button>
+
+              </div>
+
+            ))
+
+          )}
+
         </div>
+
       </section>
+
       <section className="bottom-grid">
-        {/* UPCOMING ASSIGNMENTS */}
+
 
         <div className="dashboard-panel">
+
           <div className="panel-heading">
+
             <div>
-              <h2>Upcoming Assignments</h2>
-              <p>Don't miss your deadlines</p>
+              <h2>
+                Upcoming Assignments
+              </h2>
+
+              <p>
+                Don't miss your deadlines
+              </p>
             </div>
 
-            <button className="small-view-btn">View all</button>
+            <button className="small-view-btn">
+              View all
+            </button>
+
           </div>
+
 
           <div className="assignment-list">
+
             <div className="assignment-item">
-              <div className="assignment-icon">DB</div>
+
+              <div className="assignment-icon">
+                DB
+              </div>
 
               <div className="assignment-details">
-                <h4>Database Assignment</h4>
 
-                <span>Database Management</span>
+                <h4>
+                  Database Assignment
+                </h4>
+
+                <span>
+                  Database Management
+                </span>
+
               </div>
 
               <div className="assignment-date">
-                <strong>Tomorrow</strong>
-                <span>Sep 16</span>
+
+                <strong>
+                  Tomorrow
+                </strong>
+
+                <span>
+                  Sep 16
+                </span>
+
               </div>
+
             </div>
 
+
             <div className="assignment-item">
-              <div className="assignment-icon purple-assignment">DS</div>
+
+              <div className="assignment-icon purple-assignment">
+                DS
+              </div>
 
               <div className="assignment-details">
-                <h4>Array Problems</h4>
 
-                <span>Data Structures</span>
+                <h4>
+                  Array Problems
+                </h4>
+
+                <span>
+                  Data Structures
+                </span>
+
               </div>
 
               <div className="assignment-date">
-                <strong>Sep 18</strong>
-                <span>2 days left</span>
+
+                <strong>
+                  Sep 18
+                </strong>
+
+                <span>
+                  2 days left
+                </span>
+
               </div>
+
             </div>
 
+
             <div className="assignment-item">
-              <div className="assignment-icon green-assignment">WD</div>
+
+              <div className="assignment-icon green-assignment">
+                WD
+              </div>
 
               <div className="assignment-details">
-                <h4>React Mini Project</h4>
 
-                <span>Web Development</span>
+                <h4>
+                  React Mini Project
+                </h4>
+
+                <span>
+                  Web Development
+                </span>
+
               </div>
 
               <div className="assignment-date">
-                <strong>Sep 21</strong>
-                <span>5 days left</span>
+
+                <strong>
+                  Sep 21
+                </strong>
+
+                <span>
+                  5 days left
+                </span>
               </div>
             </div>
           </div>
         </div>
 
+
         <div className="dashboard-panel">
+
           <div className="panel-heading">
+
             <div>
-              <h2>Recent Activity</h2>
-              <p>Your latest learning activity</p>
+              <h2>
+                Recent Activity
+              </h2>
+
+              <p>
+                Your latest learning activity
+              </p>
             </div>
+
           </div>
 
+
           <div className="activity-list">
+
             <div className="activity-item">
+
               <div className="activity-dot blue-dot"></div>
 
               <div className="activity-content">
-                <h4>Completed a lesson</h4>
 
-                <p>JavaScript Functions</p>
+                <h4>
+                  Completed a lesson
+                </h4>
 
-                <span>2 hours ago</span>
+                <p>
+                  JavaScript Functions
+                </p>
+
+                <span>
+                  2 hours ago
+                </span>
+
               </div>
+
             </div>
 
+
             <div className="activity-item">
+
               <div className="activity-dot green-dot"></div>
 
               <div className="activity-content">
-                <h4>Assignment submitted</h4>
 
-                <p>SQL Queries</p>
+                <h4>
+                  Assignment submitted
+                </h4>
 
-                <span>Yesterday</span>
+                <p>
+                  SQL Queries
+                </p>
+
+                <span>
+                  Yesterday
+                </span>
+
               </div>
+
             </div>
 
+
             <div className="activity-item">
+
               <div className="activity-dot purple-dot"></div>
 
               <div className="activity-content">
-                <h4>Started a new course</h4>
 
-                <p>Data Structures</p>
+                <h4>
+                  Started a new course
+                </h4>
 
-                <span>2 days ago</span>
+                <p>
+                  Data Structures
+                </p>
+
+                <span>
+                  2 days ago
+                </span>
+
               </div>
+
             </div>
+
           </div>
+
         </div>
+
       </section>
+
     </main>
   );
 };

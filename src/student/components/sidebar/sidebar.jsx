@@ -26,6 +26,10 @@ const Sidebar = () => {
     navigate("/StudentDashboard");
   };
 
+  const handleCourses=()=>{
+    navigate("/Courses");
+  }
+
   return (
     <aside className="sidebar">
 
@@ -36,14 +40,21 @@ const Sidebar = () => {
         </p>
 
         <button
-          className="sidebar-item active"
+          className={`sidebar-item ${
+            location.pathname === "/StudentDashboard" ? "active" : ""
+          }`}
           onClick={handleDashboard}
         >
           <LayoutDashboard className="sidebar-icon" />
           <span>Dashboard</span>
         </button>
 
-        <button className="sidebar-item">
+        <button
+          className={`sidebar-item ${
+            location.pathname === "/Courses" ? "active" : ""
+          }`}
+          onClick={handleCourses}
+        >
           <BookOpen className="sidebar-icon" />
           <span>Courses</span>
         </button>
