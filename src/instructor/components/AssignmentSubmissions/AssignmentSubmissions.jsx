@@ -10,7 +10,8 @@ import {
   ArrowLeft,
   FileText,
   Users,
-  Calendar
+  Calendar,
+  X
 } from "lucide-react";
 
 import "./AssignmentSubmissions.css";
@@ -27,46 +28,29 @@ const InstructorAssignmentSubmissions = () => {
   // STATE
   // ==========================================
 
-  const [assignment, setAssignment] =
+  const [assignment, setAssignment] = useState(null);
+
+  const [submissions, setSubmissions] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+
+  const [error, setError] = useState("");
+
+  const [selectedSubmission, setSelectedSubmission] =
     useState(null);
-
-  const [submissions, setSubmissions] =
-    useState([]);
-
-  const [loading, setLoading] =
-    useState(true);
-
-  const [error, setError] =
-    useState("");
 
 
   // ==========================================
-  // FETCH DATA
+  // FETCH ASSIGNMENT + SUBMISSIONS
   // ==========================================
 
   useEffect(() => {
 
-    console.log(
-      "ROUTE PARAMS:",
-      {
-        course_id,
-        assignmentId
-      }
-    );
-
-    if (
-      course_id &&
-      assignmentId
-    ) {
-
+    if (course_id && assignmentId) {
       fetchAssignmentData();
-
     }
 
-  }, [
-    course_id,
-    assignmentId
-  ]);
+  }, [course_id, assignmentId]);
 
 
   const fetchAssignmentData = async () => {
@@ -74,20 +58,23 @@ const InstructorAssignmentSubmissions = () => {
     try {
 
       setLoading(true);
-
       setError("");
 
 
-      // ======================================
-      // GET ASSIGNMENT
-      // ======================================
+      console.log(
+        "COURSE ID:",
+        course_id
+      );
 
       console.log(
-        "GETTING ASSIGNMENT:",
-        course_id,
+        "ASSIGNMENT ID:",
         assignmentId
       );
 
+
+      // --------------------------------------
+      // GET ASSIGNMENT
+      // --------------------------------------
 
       const assignmentResponse =
         await getSingleAssignment(
@@ -113,16 +100,9 @@ const InstructorAssignmentSubmissions = () => {
       }
 
 
-      // ======================================
+      // --------------------------------------
       // GET SUBMISSIONS
-      // ======================================
-
-      console.log(
-        "GETTING SUBMISSIONS:",
-        course_id,
-        assignmentId
-      );
-
+      // --------------------------------------
 
       const submissionsResponse =
         await getAssignmentSubmissions(
@@ -155,7 +135,7 @@ const InstructorAssignmentSubmissions = () => {
     } catch (error) {
 
       console.error(
-        "ASSIGNMENT PAGE ERROR:",
+        "ASSIGNMENT SUBMISSIONS ERROR:",
         error
       );
 
@@ -168,7 +148,7 @@ const InstructorAssignmentSubmissions = () => {
 
       setError(
         error.response?.data?.message ||
-        "Failed to load assignment."
+        "Failed to load assignment submissions."
       );
 
 
@@ -188,9 +168,7 @@ const InstructorAssignmentSubmissions = () => {
   const formatDate = (date) => {
 
     if (!date) {
-
       return "-";
-
     }
 
 
@@ -217,6 +195,7 @@ const InstructorAssignmentSubmissions = () => {
         year: "numeric",
         hour: "numeric",
         minute: "2-digit",
+        second: "2-digit",
         hour12: true
       }
     );
@@ -225,8 +204,66 @@ const InstructorAssignmentSubmissions = () => {
 
 
   // ==========================================
-  // LOADING
+  // GET STUDENT NAME
   // ==========================================
+
+  const getStudentName = (
+    submission
+  ) => {
+
+    const firstName =
+      submission.fname || "";
+
+    const lastName =
+      submission.lname || "";
+
+
+    const fullName =
+      `${firstName} ${lastName}`.trim();
+
+
+    if (fullName) {
+
+      return fullName;
+
+    }
+
+
+    return `Student #${submission.student_id}`;
+
+  };
+
+
+  // ==========================================
+  // OPEN SUBMISSION
+  // ==========================================
+
+  const openSubmission = (
+    submission
+  ) => {
+
+    console.log(
+      "SELECTED SUBMISSION:",
+      submission
+    );
+
+
+    setSelectedSubmission(
+      submission
+    );
+
+  };
+
+
+  // ==========================================
+  // CLOSE SUBMISSION
+  // ==========================================
+
+  const closeSubmission = () => {
+
+    setSelectedSubmission(null);
+
+  };
 
   if (loading) {
 
@@ -257,24 +294,60 @@ const InstructorAssignmentSubmissions = () => {
 
 
       {/* ===================================== */}
-      {/* BACK BUTTON */}
+      {/* HEADER */}
       {/* ===================================== */}
 
-      <button
-        type="button"
-        className="back-button"
-        onClick={() =>
-          navigate(
-            `/InstructorAssignment/${course_id}`
-          )
-        }
-      >
+      <div className="assignment-submissions-header">
 
-        <ArrowLeft size={18} />
 
-        Back to Assignments
+        <button
+          type="button"
+          className="back-button"
+          onClick={() =>
+            navigate(
+              `/InstructorAssignment/${course_id}`
+            )
+          }
+        >
 
-      </button>
+          <ArrowLeft size={18} />
+
+          Back to Assignments
+
+        </button>
+
+
+        {assignment && (
+
+          <div className="assignment-heading">
+
+
+            <div className="assignment-heading-icon">
+
+              <FileText size={28} />
+
+            </div>
+
+
+            <div>
+
+              <h1>
+                {assignment.title}
+              </h1>
+
+
+              <p>
+                Assignment submissions
+              </p>
+
+            </div>
+
+
+          </div>
+
+        )}
+
+      </div>
 
 
       {/* ===================================== */}
@@ -300,34 +373,24 @@ const InstructorAssignmentSubmissions = () => {
 
         <div className="assignment-details-card">
 
-          <div className="assignment-heading">
 
-            <div className="assignment-heading-icon">
-
-              <FileText size={28} />
-
-            </div>
-
+          <div className="assignment-details-top">
 
             <div>
 
-              <h1>
+              <h2>
                 {assignment.title}
-              </h1>
+              </h2>
 
-              <p>
-                Assignment submissions
+
+              <p className="assignment-description">
+
+                {assignment.descriptions ||
+                  "No description provided."}
+
               </p>
 
             </div>
-
-          </div>
-
-
-          <div className="assignment-description">
-
-            {assignment.descriptions ||
-              "No description provided."}
 
           </div>
 
@@ -347,6 +410,7 @@ const InstructorAssignmentSubmissions = () => {
                   Due Date
                 </span>
 
+
                 <strong>
 
                   {formatDate(
@@ -360,7 +424,7 @@ const InstructorAssignmentSubmissions = () => {
             </div>
 
 
-            {/* MARKS */}
+            {/* MAX MARKS */}
 
             <div className="assignment-meta-item">
 
@@ -371,6 +435,7 @@ const InstructorAssignmentSubmissions = () => {
                 <span>
                   Maximum Marks
                 </span>
+
 
                 <strong>
 
@@ -394,6 +459,7 @@ const InstructorAssignmentSubmissions = () => {
                 <span>
                   Submissions
                 </span>
+
 
                 <strong>
 
@@ -422,14 +488,16 @@ const InstructorAssignmentSubmissions = () => {
 
         <div className="submissions-section-header">
 
+
           <div>
 
             <h2>
               Student Submissions
             </h2>
 
+
             <p>
-              Students who submitted this assignment
+              Click on a submission to view it.
             </p>
 
           </div>
@@ -443,12 +511,11 @@ const InstructorAssignmentSubmissions = () => {
 
           </div>
 
+
         </div>
 
 
-        {/* =================================== */}
         {/* NO SUBMISSIONS */}
-        {/* =================================== */}
 
         {submissions.length === 0 ? (
 
@@ -456,16 +523,21 @@ const InstructorAssignmentSubmissions = () => {
 
             <FileText size={42} />
 
+
             <h3>
-              No Submissions
+              No submissions yet
             </h3>
 
+
             <p>
-              No students have submitted
+
+              Students have not submitted
               this assignment yet.
+
             </p>
 
           </div>
+
 
         ) : (
 
@@ -476,12 +548,18 @@ const InstructorAssignmentSubmissions = () => {
 
           <div className="submissions-list">
 
+
             {submissions.map(
               (submission) => (
 
                 <div
                   className="submission-card"
                   key={submission.id}
+                  onClick={() =>
+                    openSubmission(
+                      submission
+                    )
+                  }
                 >
 
 
@@ -498,12 +576,12 @@ const InstructorAssignmentSubmissions = () => {
 
                   <div className="submission-info">
 
+
                     <h3>
 
-                      {submission.fname ||
-                       submission.lname
-                        ? `${submission.fname || ""} ${submission.lname || ""}`.trim()
-                        : `Student #${submission.student_id}`}
+                      {getStudentName(
+                        submission
+                      )}
 
                     </h3>
 
@@ -517,6 +595,7 @@ const InstructorAssignmentSubmissions = () => {
                       )}
 
                     </p>
+
 
                   </div>
 
@@ -557,6 +636,15 @@ const InstructorAssignmentSubmissions = () => {
                   <button
                     type="button"
                     className="view-submission-button"
+                    onClick={(event) => {
+
+                      event.stopPropagation();
+
+                      openSubmission(
+                        submission
+                      );
+
+                    }}
                   >
 
                     View
@@ -574,6 +662,186 @@ const InstructorAssignmentSubmissions = () => {
         )}
 
       </div>
+
+
+      {/* ===================================== */}
+      {/* SUBMISSION MODAL */}
+      {/* ===================================== */}
+
+      {selectedSubmission && (
+
+        <div
+          className="submission-modal-overlay"
+          onClick={closeSubmission}
+        >
+
+
+          <div
+            className="submission-modal"
+            onClick={(event) =>
+              event.stopPropagation()
+            }
+          >
+
+
+            {/* ================================= */}
+            {/* MODAL HEADER */}
+            {/* ================================= */}
+
+            <div className="submission-modal-header">
+
+
+              <div>
+
+                <h2>
+
+                  {getStudentName(
+                    selectedSubmission
+                  )}
+
+                </h2>
+
+
+                <p>
+
+                  Submitted on{" "}
+
+                  {formatDate(
+                    selectedSubmission.submitted_at
+                  )}
+
+                </p>
+
+              </div>
+
+
+              <button
+                type="button"
+                className="close-modal-button"
+                onClick={closeSubmission}
+              >
+
+                <X size={22} />
+
+              </button>
+
+
+            </div>
+
+
+            {/* ================================= */}
+            {/* MODAL CONTENT */}
+            {/* ================================= */}
+
+            <div className="submission-modal-content">
+
+
+              {/* ================================= */}
+              {/* STUDENT ANSWER */}
+              {/* ================================= */}
+
+              <div className="submitted-file-section">
+
+
+                <div className="submitted-file-header">
+
+                  <h3>
+                    Submitted Assignment
+                  </h3>
+
+                </div>
+
+
+                {selectedSubmission.file_url ? (
+
+                  <div className="submitted-answer">
+
+                    <p>
+                      {selectedSubmission.file_url}
+                    </p>
+
+                  </div>
+
+                ) : (
+
+                  <div className="no-file">
+
+                    <FileText size={40} />
+
+                    <p>
+                      No answer was submitted.
+                    </p>
+
+                  </div>
+
+                )}
+
+              </div>
+
+
+              {/* ================================= */}
+              {/* GRADE */}
+              {/* ================================= */}
+
+              <div className="grading-section">
+
+
+                <div className="grading-field">
+
+                  <label>
+                    Grade
+                  </label>
+
+
+                  <input
+                    type="number"
+                    min="0"
+                    max={
+                      assignment?.max_marks
+                    }
+                    value={
+                      selectedSubmission.grade ?? ""
+                    }
+                    readOnly
+                  />
+
+                </div>
+
+
+                {/* ================================= */}
+                {/* FEEDBACK */}
+                {/* ================================= */}
+
+                <div className="grading-field">
+
+                  <label>
+                    Feedback
+                  </label>
+
+
+                  <textarea
+                    value={
+                      selectedSubmission.feedback ||
+                      ""
+                    }
+                    readOnly
+                    placeholder="No feedback provided."
+                  />
+
+                </div>
+
+
+              </div>
+
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      )}
 
     </div>
 
