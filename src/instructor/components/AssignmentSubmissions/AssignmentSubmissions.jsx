@@ -305,7 +305,7 @@ const InstructorAssignmentSubmissions = () => {
           className="back-button"
           onClick={() =>
             navigate(
-              `/InstructorAssignment/${course_id}`
+              `/InstructorAssignmentPage/${course_id}`
             )
           }
         >
