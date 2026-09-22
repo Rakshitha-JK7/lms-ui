@@ -22,6 +22,9 @@ const Sidebar = () => {
     navigate("/signin");
   };
 
+  const handleSettings =() =>{
+    navigate("/StudentSettings");
+  }
   const handleDashboard = () => {
     navigate("/StudentDashboard");
   };
@@ -83,7 +86,11 @@ const Sidebar = () => {
           GENERAL
         </p>
 
-        <button className="sidebar-item">
+        <button 
+        className={`sidebar-item ${
+            location.pathname === "/Settings" ? "active" : ""
+          }`}
+          onClick={handleSettings}>
           <Settings className="sidebar-icon" />
           <span>Settings</span>
         </button>

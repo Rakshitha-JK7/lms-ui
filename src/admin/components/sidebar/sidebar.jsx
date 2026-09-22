@@ -21,6 +21,9 @@ function AdminSidebar() {
     navigate("/signin");
   };
 
+  const handleCourses=()=>{
+    navigate("/AdminCoursePage")
+  }
   const handleDashboard=()=>{
     navigate("/AdminDashboard");
   }
@@ -34,7 +37,8 @@ function AdminSidebar() {
           ADMIN MENU
         </div>
 
-        <button className="admin-sidebar-item active" onClick={handleDashboard}>
+        <button className={`admin-sidebar-item ${
+          location.pathname==="/AdminDashboard"? "active":""}`} onClick={handleDashboard}>
           <LayoutDashboard />
           <span>Dashboard</span>
         </button>
@@ -44,7 +48,8 @@ function AdminSidebar() {
           <span>Users</span>
         </button>
 
-        <button className="admin-sidebar-item">
+        <button className={`admin-sidebar-item ${
+          location.pathname==="/AdminCoursePage"? "active":""}`} onClick={handleCourses}>
           <BookOpen />
           <span>Courses</span>
         </button>

@@ -1,0 +1,888 @@
+/* =========================================================
+   INSTRUCTOR COURSE PAGE
+   ========================================================= */
+
+.course-content-page {
+  width: auto;
+  min-height: 100%;
+
+  box-sizing: border-box;
+
+  padding: 30px 40px;
+
+  background: #f8fafc;
+
+  color: #14213d;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+}
+
+
+/* =========================================================
+   TOP SECTION
+   ========================================================= */
+
+.course-top {
+  width: 100%;
+  max-width: 1000px;
+
+  margin: 0 auto 24px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.course-heading {
+  display: flex;
+  flex-direction: column;
+}
+
+.course-label {
+  margin: 0 0 5px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 0.7px;
+
+  color: #5865f2;
+}
+
+.course-heading h1 {
+  margin: 0;
+
+  font-size: 32px;
+  line-height: 1.15;
+
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+
+  color: #122444;
+}
+
+.course-heading span {
+  margin-top: 7px;
+
+  font-size: 15px;
+
+  color: #71809b;
+}
+
+
+/* =========================================================
+   CREATE BUTTON - TOP RIGHT
+   ========================================================= */
+
+.create-course-button {
+  flex-shrink: 0;
+
+  width: 105px;
+  height: 40px;
+
+  margin-top: 8px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #5865f2;
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 10px rgba(88, 101, 242, 0.20);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.create-course-button:hover {
+  background: #4f46e5;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 6px 14px rgba(88, 101, 242, 0.28);
+}
+
+.create-course-button:active {
+  transform: translateY(0);
+
+  box-shadow:
+    0 3px 8px rgba(88, 101, 242, 0.20);
+}
+
+
+/* =========================================================
+   EMPTY COURSE CARD
+   ========================================================= */
+
+.course-empty {
+  width: 100%;
+  max-width: 1000px;
+
+  height: 300px;
+
+  margin: 0 auto;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border: 1px solid #e5ebf4;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 3px 12px rgba(30, 55, 90, 0.04);
+}
+
+
+/* =========================================================
+   EMPTY COURSE ICON
+   ========================================================= */
+
+.empty-icon-container {
+  width: 70px;
+  height: 70px;
+
+  margin-bottom: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border-radius: 50%;
+
+  background: #eef2ff;
+
+  border: 1px solid #dfe5ff;
+}
+
+.course-empty-icon {
+  color: #5865f2;
+
+  stroke-width: 1.8;
+}
+
+
+/* =========================================================
+   EMPTY COURSE TEXT
+   ========================================================= */
+
+.course-empty h2 {
+  margin: 0;
+
+  font-size: 25px;
+
+  line-height: 1.3;
+
+  font-weight: 700;
+
+  color: #172746;
+}
+
+.course-empty p {
+  margin: 7px 0 0;
+
+  font-size: 14px;
+
+  color: #71809b;
+}
+
+
+/* =========================================================
+   COURSE LIST
+   ========================================================= */
+
+.course-content-list {
+  width: 100%;
+  max-width: 1000px;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+
+/* =========================================================
+   COURSE CARD
+   ========================================================= */
+
+.course-content-box {
+  width: 100%;
+
+  min-height: 76px;
+
+  padding: 13px 16px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #ffffff;
+
+  border: 1px solid #e5ebf4;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 2px 8px rgba(30, 55, 90, 0.035);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.course-content-box:hover {
+  transform: translateY(-1px);
+
+  border-color: #d8defb;
+
+  box-shadow:
+    0 5px 14px rgba(30, 55, 90, 0.07);
+}
+
+
+/* =========================================================
+   COURSE LEFT SIDE
+   ========================================================= */
+
+.course-content-left {
+  display: flex;
+  align-items: center;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   COURSE ICON
+   ========================================================= */
+
+.course-content-icon {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  margin-right: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: #eef2ff;
+
+  color: #5865f2;
+}
+
+
+/* =========================================================
+   COURSE INFORMATION
+   ========================================================= */
+
+.course-content-info {
+  min-width: 0;
+}
+
+.course-code {
+  display: block;
+
+  margin-bottom: 2px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 0.6px;
+
+  color: #5865f2;
+}
+
+.course-content-info h2 {
+  margin: 0;
+
+  font-size: 17px;
+
+  line-height: 1.3;
+
+  font-weight: 650;
+
+  color: #172746;
+}
+
+.course-content-info p {
+  margin: 3px 0 0;
+
+  font-size: 12px;
+
+  color: #8190a9;
+}
+
+
+/* =========================================================
+   OPEN COURSE BUTTON
+   ========================================================= */
+
+.course-open-button {
+  flex-shrink: 0;
+
+  height: 34px;
+
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 2px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #f0f2ff;
+
+  color: #4f46e5;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.course-open-button:hover {
+  background: #e5e8ff;
+
+  transform: translateX(2px);
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.course-loading {
+  height: 300px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  color: #71809b;
+
+  font-size: 14px;
+}
+
+.course-loading p {
+  margin: 0;
+}
+
+
+/* =========================================================
+   LOADING SPINNER
+   ========================================================= */
+
+.loading-spinner {
+  width: 27px;
+  height: 27px;
+
+  border: 3px solid #e5e9f5;
+
+  border-top-color: #5865f2;
+
+  border-radius: 50%;
+
+  animation: course-spin 0.8s linear infinite;
+}
+
+@keyframes course-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   CREATE COURSE MODAL OVERLAY
+   ========================================================= */
+
+.course-modal-overlay {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  background: rgba(15, 23, 42, 0.45);
+
+  backdrop-filter: blur(3px);
+}
+
+
+/* =========================================================
+   CREATE COURSE MODAL
+   ========================================================= */
+
+.course-modal {
+  width: 100%;
+  max-width: 500px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 20px 50px rgba(15, 23, 42, 0.18);
+
+  overflow: hidden;
+
+  animation: modal-show 0.2s ease;
+}
+
+@keyframes modal-show {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(10px)
+      scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* =========================================================
+   MODAL HEADER
+   ========================================================= */
+
+.course-modal-header {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding: 22px 24px 18px;
+
+  border-bottom: 1px solid #edf0f5;
+}
+
+.course-modal-header h2 {
+  margin: 0;
+
+  font-size: 22px;
+
+  line-height: 1.3;
+
+  font-weight: 700;
+
+  color: #172746;
+}
+
+.course-modal-header p {
+  margin: 5px 0 0;
+
+  font-size: 13px;
+
+  line-height: 1.4;
+
+  color: #71809b;
+}
+
+
+/* =========================================================
+   MODAL CLOSE BUTTON
+   ========================================================= */
+
+.course-modal-close {
+  width: 34px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #f5f6fa;
+
+  color: #64748b;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.course-modal-close:hover {
+  background: #eceef5;
+
+  color: #172746;
+}
+
+
+/* =========================================================
+   MODAL FORM
+   ========================================================= */
+
+.course-modal form {
+  padding: 22px 24px 24px;
+}
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.course-form-group {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 17px;
+}
+
+.course-form-group label {
+  margin-bottom: 7px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #334155;
+}
+
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+.course-form-group input,
+.course-form-group select {
+  width: 100%;
+  height: 42px;
+
+  box-sizing: border-box;
+
+  padding: 0 12px;
+
+  border: 1px solid #dce2ec;
+
+  border-radius: 8px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #172746;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.course-form-group input::placeholder {
+  color: #a0aabd;
+}
+
+.course-form-group input:hover,
+.course-form-group select:hover {
+  border-color: #cbd5e1;
+}
+
+.course-form-group input:focus,
+.course-form-group select:focus {
+  border-color: #5865f2;
+
+  box-shadow:
+    0 0 0 3px rgba(88, 101, 242, 0.10);
+}
+
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.course-form-group select {
+  cursor: pointer;
+
+  appearance: auto;
+}
+
+
+/* =========================================================
+   MODAL ACTION BUTTONS
+   ========================================================= */
+
+.course-modal-actions {
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  margin-top: 24px;
+}
+
+
+/* =========================================================
+   CANCEL BUTTON
+   ========================================================= */
+
+.course-cancel-button {
+  height: 40px;
+
+  padding: 0 16px;
+
+  border: 1px solid #dce2ec;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #64748b;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.course-cancel-button:hover {
+  background: #f8fafc;
+
+  border-color: #cbd5e1;
+}
+
+
+/* =========================================================
+   SUBMIT CREATE COURSE BUTTON
+   ========================================================= */
+
+.course-submit-button {
+  height: 40px;
+
+  padding: 0 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #5865f2;
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 3px 8px rgba(88, 101, 242, 0.18);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.course-submit-button:hover {
+  background: #4f46e5;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 5px 12px rgba(88, 101, 242, 0.25);
+}
+
+.course-submit-button:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .course-content-page {
+    padding: 25px 28px;
+  }
+
+  .course-top,
+  .course-empty,
+  .course-content-list {
+    max-width: 850px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  .course-content-page {
+    padding: 22px 18px;
+  }
+
+  .course-top {
+    gap: 15px;
+  }
+
+  .course-heading h1 {
+    font-size: 27px;
+  }
+
+  .course-heading span {
+    font-size: 14px;
+  }
+
+  .create-course-button {
+    width: 95px;
+
+    height: 38px;
+
+    font-size: 13px;
+  }
+
+  .course-empty {
+    height: 280px;
+  }
+
+  .course-empty h2 {
+    font-size: 22px;
+  }
+
+  .course-empty p {
+    font-size: 13px;
+  }
+
+  .course-modal {
+    max-width: 100%;
+  }
+
+  .course-modal-header {
+    padding: 18px;
+  }
+
+  .course-modal form {
+    padding: 18px;
+  }
+
+  .course-modal-header h2 {
+    font-size: 20px;
+  }
+
+  .course-modal-actions {
+    flex-direction: column-reverse;
+
+    width: 100%;
+  }
+
+  .course-cancel-button,
+  .course-submit-button {
+    width: 100%;
+  }
+}

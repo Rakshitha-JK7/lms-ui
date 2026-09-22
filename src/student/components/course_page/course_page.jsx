@@ -3,51 +3,74 @@ import { useNavigate } from "react-router-dom";
 import { BookOpen, ChevronRight } from "lucide-react";
 
 import { AccessCourses } from "../../../services/api.js";
+
 import "./course_page.css";
 
-const CourseContent = ()=>{
-  const navigate =useNavigate();
+const CourseContent = () => {
 
-  const [courses,setCourses] = useState([]);
-  const [message,setMessage] = useState("");
-  const [loading,setLoading] = useState(true);
+  const navigate = useNavigate();
 
-  useEffect(()=>{
+  const [courses, setCourses] = useState([]);
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(true);
 
-    const fetchCourses = async()=>{
-      try{
-        const user = JSON.parse(localStorage.getItem("user"));
+  useEffect(() => {
+
+    const fetchCourses = async () => {
+
+      try {
+
+        const user = JSON.parse(
+          localStorage.getItem("user")
+        );
 
         const response = await AccessCourses(user.id);
+
         const data = response.data;
+
+        console.log("STUDENT COURSES:", data);
 
         setCourses(data.data || []);
         setMessage(data.message);
-      }catch(error){
+
+      } catch (error) {
+
         console.log(error);
 
-        setMessage(error.response?.data?.message|| "Failed to fetch courses");
-      }finally{
+        setMessage(
+          error.response?.data?.message ||
+          "Failed to fetch courses"
+        );
+
+      } finally {
+
         setLoading(false);
+
       }
     };
 
     fetchCourses();
-  },[]);
 
-  const handleCourse=(id)=>{
-    navigate(`/StudentAssignments/${id}`);
+  }, []);
+
+  const handleCourse = (id) => {
+
+    navigate(`/StudentAssignment/${id}`);
+
   };
 
-  
-  if(loading){
-    return(
+  if (loading) {
+
+    return (
       <main className="course-content-page">
+
         <div className="course-loading">
           Loading....
         </div>
+
       </main>
     );
+
   }
 
   return (
@@ -65,7 +88,6 @@ const CourseContent = ()=>{
 
       </div>
 
-
       {courses.length === 0 ? (
 
         <div className="course-empty">
@@ -75,7 +97,8 @@ const CourseContent = ()=>{
           <h2>No Courses available</h2>
 
           <p>
-            There are currently no courses available for your department.
+            There are currently no courses available
+            for your department.
           </p>
 
         </div>
@@ -84,11 +107,11 @@ const CourseContent = ()=>{
 
         <div className="course-content-list">
 
-          {courses.map((courses) => (
+          {courses.map((course) => (
 
             <div
               className="course-content-box"
-              key={courses.id}
+              key={course.id || course.course_id}
             >
 
               <div className="course-content-left">
@@ -97,35 +120,30 @@ const CourseContent = ()=>{
                   <BookOpen />
                 </div>
 
-
                 <div className="course-content-info">
 
                   <span className="course-code">
-                    {courses.id}
+                    {course.id || course.course_id}
                   </span>
 
                   <h2>
-                    {courses.course_name}
+                    {course.course_name}
                   </h2>
-
-                  <p>
-                    Course available for your department
-                  </p>
 
                 </div>
 
               </div>
 
-
               <button
                 className="course-open-button"
-                onClick={() => handleCourse(courses.id)}
+                onClick={() =>
+                  navigate(
+                    `/StudentAssignment/${course.id || course.course_id}`
+                  )
+                }
               >
-
                 Open
-
                 <ChevronRight />
-
               </button>
 
             </div>
@@ -133,9 +151,11 @@ const CourseContent = ()=>{
           ))}
 
         </div>
+
       )}
-     </main>
+
+    </main>
   );
-}
+};
 
 export default CourseContent;

@@ -1,25 +1,25 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import {
-  InstuctorCourses,
+  AdminCourses as getAdminCourses,
   CreateCourse
 } from "../../../services/api";
 
 import {
-  BookOpen,
-  ChevronRight,
   Plus,
   X
 } from "lucide-react";
 
 import "./course_page.css";
 
-const InstructorCourse = () => {
+
+const AdminCourses = () => {
+
   const navigate = useNavigate();
+  const [courses, setCourses] = useState([]);
 
   const [message, setMessage] = useState("");
-  const [courses, setCourses] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   const [showCreateModal, setShowCreateModal] = useState(false);
 
@@ -29,48 +29,37 @@ const InstructorCourse = () => {
     dept_id: ""
   });
 
-  
+
   useEffect(() => {
-    fetchCourses();
+    getCourses();
   }, []);
 
-  const fetchCourses = async () => {
+
+  const getCourses = async () => {
+
     try {
-      const storedUser = localStorage.getItem("user");
 
-      if (!storedUser) {
-        setMessage("User information not found");
-        setLoading(false);
-        return;
-      }
+      const response = await getAdminCourses();
 
-      const user = JSON.parse(storedUser);
+      console.log("ADMIN COURSES:", response.data);
 
-      console.log("USER:", user);
-      console.log("INSTRUCTOR ID:", user.id);
+      if (response.data.status) {
 
-      if (!user.id) {
-        setMessage("Instructor ID not found");
-        setLoading(false);
-        return;
-      }
+        setCourses(response.data.data || []);
 
-      const response = await InstuctorCourses(user.id);
-
-      console.log("Instructor Courses Response:", response.data);
-
-      const data = response.data;
-
-      if (data.status) {
-        setCourses(data.data || []);
-        setMessage("");
       } else {
+
         setCourses([]);
-        setMessage(data.message || "Failed to fetch courses");
+
+        setMessage(
+          response.data.message || "Failed to fetch courses"
+        );
+
       }
 
     } catch (error) {
-      console.error("FETCH COURSES ERROR:", error);
+
+      console.error("FETCH ADMIN COURSES ERROR:", error);
 
       console.error(
         "Backend response:",
@@ -83,13 +72,20 @@ const InstructorCourse = () => {
         error.response?.data?.message ||
         "Failed to fetch courses"
       );
-
-    } finally {
-      setLoading(false);
     }
   };
 
+
+  const handleCreateCourse = () => {
+
+    setShowCreateModal(true);
+
+    setMessage("");
+  };
+
+
   const handleInputChange = (e) => {
+
     const { name, value } = e.target;
 
     setCourseData((previousData) => ({
@@ -98,12 +94,9 @@ const InstructorCourse = () => {
     }));
   };
 
-  const handleCreateCourse = () => {
-    setShowCreateModal(true);
-    setMessage("");
-  };
 
   const handleCloseModal = () => {
+
     setShowCreateModal(false);
 
     setCourseData({
@@ -113,21 +106,35 @@ const InstructorCourse = () => {
     });
   };
 
+
+  /* =========================
+     SUBMIT COURSE
+  ========================= */
+
   const handleSubmitCourse = async (e) => {
+
     e.preventDefault();
 
     try {
+
+
       const storedUser = localStorage.getItem("user");
 
       if (!storedUser) {
+
         setMessage("User information not found");
+
         return;
       }
 
+
       const user = JSON.parse(storedUser);
 
+
       if (!user.id) {
-        setMessage("Instructor ID not found");
+
+        setMessage("Admin ID not found");
+
         return;
       }
 
@@ -136,11 +143,14 @@ const InstructorCourse = () => {
         !courseData.course_name ||
         !courseData.dept_id
       ) {
+
         setMessage("Please fill all fields");
+
         return;
       }
 
-      console.log("Creating course with:");
+
+      console.log("Creating course:");
 
       console.log({
         instructor_id: user.id,
@@ -156,33 +166,45 @@ const InstructorCourse = () => {
         courseData.course_number
       );
 
+
       console.log(
         "CREATE COURSE RESPONSE:",
         response.data
       );
 
+
       const data = response.data;
 
+
       if (data.status) {
+
         setMessage("Course created successfully");
 
         handleCloseModal();
 
-        await fetchCourses();
+        await getCourses();
 
       } else {
+
         setMessage(
-          data.message || "Failed to create course"
+          data.message ||
+          "Failed to create course"
         );
       }
 
+
     } catch (error) {
-      console.error("CREATE COURSE ERROR:", error);
+
+      console.error(
+        "CREATE COURSE ERROR:",
+        error
+      );
 
       console.error(
         "Backend response:",
         error.response?.data
       );
+
 
       setMessage(
         error.response?.data?.message ||
@@ -191,26 +213,25 @@ const InstructorCourse = () => {
     }
   };
 
-  if (loading) {
-    return (
-      <main className="course-content-page">
+  const departments = {};
 
-        <div className="course-loading">
 
-          <div className="loading-spinner"></div>
+  courses.forEach((course) => {
 
-          <p>
-            Loading courses...
-          </p>
+    if (!departments[course.dept_name]) {
 
-        </div>
+      departments[course.dept_name] = [];
 
-      </main>
-    );
-  }
+    }
+
+    departments[course.dept_name].push(course);
+
+  });
+
 
   return (
-    <main className="course-content-page">
+
+    <div className="admin-courses-content">
 
 
       <div className="course-top">
@@ -218,24 +239,26 @@ const InstructorCourse = () => {
         <div className="course-heading">
 
           <p className="course-label">
-            MY COURSES
+            ADMIN COURSES
           </p>
 
           <h1>
-            Course Content
+            Courses
           </h1>
 
           <span>
-            Manage the courses you have created.
+            Courses available under different departments
           </span>
 
         </div>
+
 
         <button
           type="button"
           className="create-course-button"
           onClick={handleCreateCourse}
         >
+
           <Plus size={18} />
 
           <span>
@@ -246,95 +269,112 @@ const InstructorCourse = () => {
 
       </div>
 
+
       {message && (
+
         <div className="course-message">
+
           {message}
+
         </div>
+
       )}
+
 
       {courses.length === 0 ? (
 
         <div className="course-empty">
 
-          <div className="empty-icon-container">
-
-            <BookOpen
-              className="course-empty-icon"
-              size={40}
-            />
-
-          </div>
-
           <h2>
-            No Courses Created
+            No Courses Available
           </h2>
 
           <p>
-            You have not created any courses yet.
+            No courses have been added yet.
           </p>
 
         </div>
 
       ) : (
 
-        <div className="course-content-list">
 
-          {courses.map((course) => (
+        Object.keys(departments).map((department) => (
 
-            <div
-              className="course-content-box"
-              key={course.id}
-            >
-
-              <div className="course-content-left">
-
-                <div className="course-content-icon">
-
-                  <BookOpen size={22} />
-
-                </div>
-
-                <div className="course-content-info">
-
-                  <span className="course-code">
-                    {course.course_number}
-                  </span>
+          <div
+            className="department-section"
+            key={department}
+          >
 
 
-                  <h2>
-                    {course.course_name}
-                  </h2>
+            <div className="department-title">
 
-                  <p>
-                    Course created by you
-                  </p>
+              <div>
 
-                </div>
+                <h2>
+                  {department}
+                </h2>
 
               </div>
 
-              <button
-                type="button"
-                className="course-open-button"
-                key={course.id}
-                onClick={() =>
-                  navigate(`/InstructorAssignmentPage/${course.id}`)
-                }
-              >
-
-                Open
-
-                <ChevronRight size={17} />
-
-              </button>
+              <span>
+                {departments[department].length} Courses
+              </span>
 
             </div>
 
-          ))}
 
-        </div>
+            <div className="courses-grid">
+
+              {departments[department].map((course) => (
+
+                <div
+                  className="course-card"
+                  key={course.id || course.course_id}
+                >
+
+                  <h3>
+                    {course.course_name}
+                  </h3>
+
+
+                  <p>
+                    Course ID:{" "}
+                    {course.course_number ||
+                      course.course_id}
+                  </p>
+
+
+                  <p>
+                    Department:{" "}
+                    {course.dept_name}
+                  </p>
+
+                  <button
+                      type="button"
+                      className="course-open-button"
+                      onClick={() => {
+                        console.log("CLICKED COURSE:", course);
+
+                        navigate(
+                          `/InstructorAssignmentPage/${course.id || course. course_id}`
+                        );
+                       }}
+                      >
+                      View Assignments
+                    </button>
+
+                </div>
+
+              ))}
+
+            </div>
+
+          </div>
+
+        ))
 
       )}
+
 
       {showCreateModal && (
 
@@ -342,6 +382,7 @@ const InstructorCourse = () => {
           className="course-modal-overlay"
           onClick={handleCloseModal}
         >
+
 
           <div
             className="course-modal"
@@ -362,6 +403,7 @@ const InstructorCourse = () => {
 
               </div>
 
+
               <button
                 type="button"
                 className="course-modal-close"
@@ -373,8 +415,8 @@ const InstructorCourse = () => {
               </button>
 
             </div>
-
             <form onSubmit={handleSubmitCourse}>
+
 
               <div className="course-form-group">
 
@@ -409,6 +451,7 @@ const InstructorCourse = () => {
                 />
 
               </div>
+
 
               <div className="course-form-group">
 
@@ -446,15 +489,21 @@ const InstructorCourse = () => {
                 </select>
 
               </div>
+
+
               <div className="course-modal-actions">
+
 
                 <button
                   type="button"
                   className="course-cancel-button"
                   onClick={handleCloseModal}
                 >
+
                   Cancel
+
                 </button>
+
 
                 <button
                   type="submit"
@@ -469,6 +518,7 @@ const InstructorCourse = () => {
 
               </div>
 
+
             </form>
 
           </div>
@@ -477,8 +527,10 @@ const InstructorCourse = () => {
 
       )}
 
-    </main>
+    </div>
+
   );
 };
 
-export default InstructorCourse;
+
+export default AdminCourses;

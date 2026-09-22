@@ -189,7 +189,7 @@ const DashboardHome = () => {
                 <div className="course-card-top">
 
                   <div className="course-logo">
-                    {course.id?.substring(0, 2)}
+                    {course.course_number};
                   </div>
 
                 </div>

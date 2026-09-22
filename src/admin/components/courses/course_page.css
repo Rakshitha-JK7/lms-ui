@@ -1,0 +1,158 @@
+.admin-courses-content {
+  margin-left: 334px;
+  margin-top: 102px;
+
+  padding: 27px 40px 48px 0px;
+
+  min-height: calc(100vh - 102px);
+
+  background-color: #f7f8fc;
+
+  box-sizing: border-box;
+}
+
+
+/* Page title */
+
+.courses-title {
+  margin-bottom: 28px;
+}
+
+.courses-title h1 {
+  margin: 0;
+
+  font-size: 32px;
+  font-weight: 600;
+
+  color: #222;
+}
+
+.courses-title p {
+  margin-top: 8px;
+  margin-bottom: 0;
+
+  font-size: 15px;
+
+  color: #777;
+}
+
+
+/* Department section */
+
+.department-section {
+  margin-bottom: 32px;
+
+  background-color: white;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 14px;
+
+  overflow: hidden;
+}
+
+
+/* Department heading */
+
+.department-title {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 18px 22px;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.department-title h2 {
+  margin: 0;
+
+  font-size: 20px;
+
+  font-weight: 600;
+
+  color: #4f46e5;
+}
+
+.department-title span {
+  font-size: 14px;
+
+  color: #777;
+}
+
+
+/* Course cards */
+
+.courses-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+
+  padding: 20px;
+
+  background-color: #f7f8fc;
+}
+
+
+/* Individual course */
+
+.course-card {
+  background-color: white;
+
+  padding: 20px;
+
+  min-height: 130px;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 12px;
+
+  box-sizing: border-box;
+}
+
+.course-card h3 {
+  margin: 0 0 18px 0;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  color: #4f46e5;
+}
+
+.course-card p {
+  margin: 8px 0;
+
+  font-size: 14px;
+
+  color: #667085;
+}
+
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+@media (max-width: 750px) {
+
+  .admin-courses-content {
+    margin-left: 0;
+
+    padding: 25px;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

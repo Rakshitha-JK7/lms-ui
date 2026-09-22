@@ -1,15 +1,15 @@
 import Header from "../student/components/header/header";
 import InstructorSidebar from "./components/sidebar/sidebar";
-import InstructorCourse from "./components/course_page/course_page";
+import InstructorAssignment from "./components/assignments/assignment.jsx";
 
-const InstructorCourses =()=>{
+const InstructorAssignmentPage =()=>{
   return(
     <div>
       <Header/>
       <InstructorSidebar/>
-      <InstructorCourse/>
+      <InstructorAssignment/>
     </div>
   )
 }
 
-export default InstructorCourses;
+export default InstructorAssignmentPage;
