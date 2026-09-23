@@ -1,0 +1,517 @@
+/* =========================================
+   ADMIN ASSIGNMENT PAGE
+========================================= */
+
+.admin-assignment-page {
+  margin-left: 250px;
+  padding: 90px 40px 40px;
+  min-height: 100vh;
+  background: #f7f8fa;
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.admin-assignment-header {
+  margin-bottom: 30px;
+}
+
+
+.admin-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  border: none;
+  background: transparent;
+
+  color: #555;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  padding: 8px 0;
+
+  margin-bottom: 22px;
+}
+
+
+.admin-back-button:hover {
+  color: #4f46e5;
+}
+
+
+.admin-assignment-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+
+.admin-assignment-icon {
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: #eef0ff;
+  color: #4f46e5;
+}
+
+
+.admin-assignment-title h1 {
+  margin: 0;
+
+  font-size: 30px;
+  font-weight: 700;
+
+  color: #222;
+}
+
+
+.admin-assignment-title p {
+  margin: 6px 0 0;
+
+  color: #777;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.admin-assignment-message {
+  padding: 13px 16px;
+
+  margin-bottom: 22px;
+
+  border-radius: 8px;
+
+  background: #eef6ff;
+  border: 1px solid #d6e9ff;
+
+  color: #333;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.admin-assignment-loading {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  min-height: 300px;
+
+  color: #666;
+
+  font-size: 17px;
+}
+
+
+/* =========================================
+   NO ASSIGNMENTS
+========================================= */
+
+.admin-no-assignments {
+  min-height: 300px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  background: white;
+
+  border: 1px solid #e2e2e2;
+
+  border-radius: 14px;
+
+  padding: 40px;
+}
+
+
+.admin-no-assignments svg {
+  color: #b9bcc7;
+
+  margin-bottom: 15px;
+}
+
+
+.admin-no-assignments h2 {
+  margin: 0 0 8px;
+
+  color: #333;
+
+  font-size: 22px;
+}
+
+
+.admin-no-assignments p {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   ASSIGNMENT LIST
+========================================= */
+
+.admin-assignment-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+
+/* =========================================
+   ASSIGNMENT CARD
+========================================= */
+
+.admin-assignment-card {
+  background: white;
+
+  border: 1px solid #dedee8;
+
+  border-radius: 14px;
+
+  padding: 24px;
+
+  box-sizing: border-box;
+
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.admin-assignment-card:hover {
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   CARD HEADER
+========================================= */
+
+.admin-assignment-card-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+
+.admin-assignment-card-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+
+.admin-card-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #eef0ff;
+
+  color: #4f46e5;
+
+  flex-shrink: 0;
+}
+
+
+.admin-assignment-card-title h2 {
+  margin: 0;
+
+  font-size: 21px;
+
+  color: #222;
+
+  font-weight: 650;
+}
+
+
+.admin-assignment-card-title p {
+  margin: 5px 0 0;
+
+  color: #888;
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   MARKS
+========================================= */
+
+.admin-assignment-marks {
+  padding: 8px 13px;
+
+  border-radius: 7px;
+
+  background: #f1f1f5;
+
+  color: #333;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.admin-assignment-description {
+  margin-top: 20px;
+
+  padding: 16px;
+
+  border-radius: 9px;
+
+  background: #f8f8fa;
+}
+
+
+.admin-assignment-description p {
+  margin: 0;
+
+  color: #555;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   ASSIGNMENT INFORMATION
+========================================= */
+
+.admin-assignment-info {
+  display: flex;
+
+  align-items: center;
+
+  gap: 60px;
+
+  margin-top: 22px;
+}
+
+
+.admin-info-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.admin-info-item svg {
+  color: #666;
+
+  flex-shrink: 0;
+}
+
+
+.admin-info-item div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.admin-info-item span {
+  font-size: 12px;
+
+  color: #888;
+}
+
+
+.admin-info-item strong {
+  font-size: 14px;
+
+  color: #333;
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.admin-assignment-actions {
+  display: flex;
+
+  justify-content: flex-end;
+
+  margin-top: 24px;
+
+  padding-top: 18px;
+
+  border-top: 1px solid #eeeeee;
+}
+
+
+.admin-view-submissions-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 11px 18px;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: #4f46e5;
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.admin-view-submissions-button:hover {
+  background: #4338ca;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+
+  .admin-assignment-page {
+    margin-left: 0;
+
+    padding: 90px 25px 35px;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .admin-assignment-page {
+    padding: 80px 18px 30px;
+  }
+
+
+  .admin-assignment-card {
+    padding: 18px;
+  }
+
+
+  .admin-assignment-card-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  .admin-assignment-marks {
+    align-self: flex-start;
+  }
+
+
+  .admin-assignment-info {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 16px;
+  }
+
+
+  .admin-assignment-actions {
+    justify-content: stretch;
+  }
+
+
+  .admin-view-submissions-button {
+    width: 100%;
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .admin-assignment-title h1 {
+    font-size: 25px;
+  }
+
+
+  .admin-assignment-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+
+  .admin-assignment-card-title h2 {
+    font-size: 18px;
+  }
+
+}

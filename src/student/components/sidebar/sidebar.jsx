@@ -63,11 +63,6 @@ const Sidebar = () => {
         </button>
 
         <button className="sidebar-item">
-          <ClipboardCheck className="sidebar-icon" />
-          <span>Assignments</span>
-        </button>
-
-        <button className="sidebar-item">
           <FileText className="sidebar-icon" />
           <span>Exams</span>
         </button>

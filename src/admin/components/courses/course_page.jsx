@@ -356,7 +356,7 @@ const AdminCourses = () => {
                         console.log("CLICKED COURSE:", course);
 
                         navigate(
-                          `/InstructorAssignmentPage/${course.id || course. course_id}`
+                          `/AdminAssignment/${course.id || course. course_id}`
                         );
                        }}
                       >

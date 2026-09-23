@@ -55,11 +55,6 @@ function AdminSidebar() {
         </button>
 
         <button className="admin-sidebar-item">
-          <Building2 />
-          <span>Departments</span>
-        </button>
-
-        <button className="admin-sidebar-item">
           <BarChart3 />
           <span>Reports</span>
         </button>
