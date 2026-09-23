@@ -1,0 +1,838 @@
+/* =========================================
+   ADMIN SUBMISSIONS PAGE
+========================================= */
+
+.admin-submissions-page {
+  margin-left: 250px;
+  padding: 90px 40px 40px;
+  min-height: 100vh;
+  background: #f7f8fa;
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.admin-submissions-header {
+  margin-bottom: 28px;
+}
+
+
+.admin-submissions-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  border: none;
+  background: transparent;
+
+  color: #555;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  padding: 8px 0;
+
+  margin-bottom: 22px;
+}
+
+
+.admin-submissions-back-button:hover {
+  color: #4f46e5;
+}
+
+
+.admin-submissions-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+
+.admin-submissions-title-icon {
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: #eef0ff;
+
+  color: #4f46e5;
+}
+
+
+.admin-submissions-title h1 {
+  margin: 0;
+
+  font-size: 30px;
+
+  color: #222;
+}
+
+
+.admin-submissions-title p {
+  margin: 6px 0 0;
+
+  color: #777;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.admin-submissions-loading {
+  min-height: 300px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 17px;
+
+  color: #666;
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.admin-submissions-error {
+  margin-bottom: 20px;
+
+  padding: 13px 16px;
+
+  border-radius: 8px;
+
+  background: #fff1f1;
+
+  border: 1px solid #ffd1d1;
+
+  color: #b42318;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   ASSIGNMENT DETAILS
+========================================= */
+
+.admin-assignment-details-card {
+  background: white;
+
+  border: 1px solid #dedee8;
+
+  border-radius: 14px;
+
+  padding: 24px;
+
+  margin-bottom: 28px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.admin-assignment-description h3 {
+  margin: 0 0 10px;
+
+  font-size: 15px;
+
+  color: #333;
+}
+
+
+.admin-assignment-description p {
+  margin: 0;
+
+  color: #555;
+
+  line-height: 1.6;
+
+  font-size: 15px;
+}
+
+
+/* =========================================
+   META
+========================================= */
+
+.admin-assignment-meta {
+  display: flex;
+
+  gap: 60px;
+
+  margin-top: 24px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #eeeeee;
+}
+
+
+.admin-assignment-meta-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.admin-assignment-meta-item svg {
+  color: #666;
+
+  flex-shrink: 0;
+}
+
+
+.admin-assignment-meta-item div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.admin-assignment-meta-item span {
+  font-size: 12px;
+
+  color: #888;
+}
+
+
+.admin-assignment-meta-item strong {
+  font-size: 14px;
+
+  color: #333;
+}
+
+
+/* =========================================
+   SUBMISSIONS SECTION
+========================================= */
+
+.admin-submissions-section {
+  margin-top: 10px;
+}
+
+
+.admin-submissions-section-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+}
+
+
+.admin-submissions-section-header h2 {
+  margin: 0;
+
+  font-size: 22px;
+
+  color: #222;
+}
+
+
+.admin-submissions-section-header p {
+  margin: 6px 0 0;
+
+  color: #777;
+
+  font-size: 14px;
+}
+
+
+.admin-submission-count {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 9px 13px;
+
+  border-radius: 7px;
+
+  background: #eeeeff;
+
+  color: #4f46e5;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   NO SUBMISSIONS
+========================================= */
+
+.admin-no-submissions {
+  min-height: 280px;
+
+  background: white;
+
+  border: 1px solid #dedee8;
+
+  border-radius: 14px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  padding: 40px;
+}
+
+
+.admin-no-submissions svg {
+  color: #b8bbc5;
+
+  margin-bottom: 14px;
+}
+
+
+.admin-no-submissions h3 {
+  margin: 0 0 8px;
+
+  color: #333;
+
+  font-size: 20px;
+}
+
+
+.admin-no-submissions p {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   SUBMISSION LIST
+========================================= */
+
+.admin-submissions-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+
+/* =========================================
+   SUBMISSION CARD
+========================================= */
+
+.admin-submission-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  background: white;
+
+  border: 1px solid #dedee8;
+
+  border-radius: 12px;
+
+  padding: 18px 20px;
+
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.admin-submission-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================
+   ICON
+========================================= */
+
+.admin-submission-icon {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: #eef0ff;
+
+  color: #4f46e5;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================
+   STUDENT
+========================================= */
+
+.admin-submission-student {
+  flex: 1;
+
+  min-width: 0;
+}
+
+
+.admin-submission-student h3 {
+  margin: 0;
+
+  font-size: 16px;
+
+  color: #222;
+}
+
+
+.admin-submission-student p {
+  margin: 5px 0 0;
+
+  color: #777;
+
+  font-size: 13px;
+}
+
+
+/* =========================================
+   GRADE
+========================================= */
+
+.admin-submission-grade {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 4px;
+
+  min-width: 100px;
+}
+
+
+.admin-submission-grade span {
+  font-size: 12px;
+
+  color: #888;
+}
+
+
+.admin-submission-grade strong {
+  font-size: 14px;
+
+  color: #333;
+}
+
+
+.admin-not-graded {
+  color: #888 !important;
+}
+
+
+/* =========================================
+   VIEW BUTTON
+========================================= */
+
+.admin-view-submission-button {
+  border: none;
+
+  padding: 9px 18px;
+
+  border-radius: 7px;
+
+  background: #4f46e5;
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.admin-view-submission-button:hover {
+  background: #4338ca;
+}
+
+
+/* =========================================
+   MODAL OVERLAY
+========================================= */
+
+.admin-submission-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1000;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  padding: 20px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.admin-submission-modal {
+  width: 700px;
+
+  max-width: 100%;
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  background: white;
+
+  border-radius: 14px;
+
+  padding: 28px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   MODAL HEADER
+========================================= */
+
+.admin-modal-header {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid #eeeeee;
+}
+
+
+.admin-modal-header h2 {
+  margin: 0;
+
+  font-size: 22px;
+
+  color: #222;
+}
+
+
+.admin-modal-header p {
+  margin: 6px 0 0;
+
+  color: #777;
+
+  font-size: 13px;
+}
+
+
+.admin-close-modal-button {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 7px;
+
+  background: #f1f1f1;
+
+  color: #555;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+}
+
+
+.admin-close-modal-button:hover {
+  background: #e5e5e5;
+
+  color: #222;
+}
+
+
+/* =========================================
+   ANSWER
+========================================= */
+
+.admin-answer-section {
+  margin-top: 24px;
+}
+
+
+.admin-answer-section h3,
+.admin-grade-section h3,
+.admin-feedback-section h3 {
+  margin: 0 0 10px;
+
+  font-size: 16px;
+
+  color: #333;
+}
+
+
+.admin-answer-box {
+  min-height: 180px;
+
+  padding: 18px;
+
+  border: 1px solid #dddddd;
+
+  border-radius: 9px;
+
+  background: #fafafa;
+
+  box-sizing: border-box;
+
+  white-space: pre-wrap;
+
+  overflow-wrap: break-word;
+}
+
+
+.admin-answer-box p {
+  margin: 0;
+
+  color: #444;
+
+  line-height: 1.7;
+
+  font-size: 15px;
+
+  white-space: pre-wrap;
+}
+
+
+.admin-no-answer {
+  color: #999 !important;
+}
+
+
+/* =========================================
+   GRADE
+========================================= */
+
+.admin-grade-section {
+  margin-top: 24px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #eeeeee;
+}
+
+
+.admin-grade-value {
+  margin: 0;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  color: #333;
+}
+
+
+/* =========================================
+   FEEDBACK
+========================================= */
+
+.admin-feedback-section {
+  margin-top: 24px;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #eeeeee;
+}
+
+
+.admin-feedback-text {
+  margin: 0;
+
+  padding: 14px;
+
+  border-radius: 8px;
+
+  background: #f7f7f8;
+
+  color: #555;
+
+  line-height: 1.6;
+
+  white-space: pre-wrap;
+}
+
+
+.admin-no-feedback {
+  margin: 0;
+
+  color: #999;
+
+  font-size: 14px;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+
+  .admin-submissions-page {
+    margin-left: 0;
+
+    padding: 90px 25px 35px;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .admin-submissions-page {
+    padding: 80px 18px 30px;
+  }
+
+
+  .admin-assignment-meta {
+    flex-direction: column;
+
+    gap: 16px;
+  }
+
+
+  .admin-submissions-section-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+
+  .admin-submission-card {
+    align-items: flex-start;
+
+    flex-wrap: wrap;
+  }
+
+
+  .admin-submission-student {
+    min-width: calc(100% - 65px);
+  }
+
+
+  .admin-submission-grade {
+    align-items: flex-start;
+
+    margin-left: 62px;
+  }
+
+
+  .admin-view-submission-button {
+    margin-left: auto;
+  }
+
+
+  .admin-submission-modal {
+    padding: 20px;
+
+    max-height: 92vh;
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .admin-submissions-title h1 {
+    font-size: 24px;
+  }
+
+
+  .admin-submissions-title-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+
+  .admin-submission-card {
+    padding: 15px;
+  }
+
+
+  .admin-submission-student {
+    min-width: calc(100% - 60px);
+  }
+
+
+  .admin-submission-grade {
+    margin-left: 0;
+  }
+
+
+  .admin-view-submission-button {
+    width: 100%;
+
+    margin-left: 0;
+  }
+
+}

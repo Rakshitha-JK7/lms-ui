@@ -206,7 +206,7 @@ const AdminAssignment = () => {
           type="button"
           className="admin-back-button"
           onClick={() =>
-            navigate("/AdminCoursePage")
+            navigate(`/AdminCoursePage`)
           }
         >
 

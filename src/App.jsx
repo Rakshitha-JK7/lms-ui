@@ -12,6 +12,7 @@ import InstructorAssignmentPage from "./instructor/assignment.jsx";
 import InstructorAssignmentSubmissionPage from "./instructor/submissions_page.jsx";
 import StudentAssignmentPage from "./student/assignment.jsx";
 import AdminAssignmentPage from "./admin/assignmentpage.jsx";
+import AdminSubmissionPage from "./admin/submission.jsx";
 
 function App() {
   return (
@@ -34,8 +35,9 @@ function App() {
           path="/InstructorAssignment/:course_id/:assignmentId/submissions"
           element={<InstructorAssignmentSubmissionPage />}
         />
-        <Route path="/StudentAssignment/:course_id" element ={<StudentAssignmentPage />}
-/>
+        <Route path="/StudentAssignment/:course_id" element ={<StudentAssignmentPage />}/>
+        <Route path="/AdminAssignment/:course_id/:assignmentId/submissions" element ={<AdminSubmissionPage />}/> 
+
       </Routes>
     </BrowserRouter>
   );
